@@ -22,11 +22,11 @@ jobs:
         run: npm install
 
       - name: Install Angular CLI
-        working-directory: ./front
+        working-directory: ./testProject
         run: npm install @angular/cli@latest --save-dev
 
       - name: Start Angular frontend
-        working-directory: ./front
+        working-directory: ./testProject
         run: nohup ./node_modules/.bin/ng serve --port 4200 --host 0.0.0.0 &
 
       - name: Wait for frontend
