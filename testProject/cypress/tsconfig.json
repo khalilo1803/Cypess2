@@ -1,5 +1,5 @@
 {
-  "extends": "../testProject/tsconfig.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "types": ["cypress"]
   },
