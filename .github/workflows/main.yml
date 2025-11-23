@@ -18,6 +18,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
+        working-directory: ./testProject
         run: npm install
 
       - name: Start Angular frontend
