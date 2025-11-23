@@ -1,0 +1,12 @@
+
+
+<h1>hello</h1>
+<h2>{{ myControl.value!}}</h2>
+<mat-form-field appearance="fill">
+  <input type="text"  matInput [formControl]="myControl" [matAutocomplete]="auto" (focus)="show()">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredOptions  | async" [value]="option">
+      {{ option }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
