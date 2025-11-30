@@ -37,15 +37,18 @@ jobs:
         run: npx cypress run
 
       - name: Debug Cypress output
+        if: always()
         run: ls -R ./testProject/cypress
       
       - name: Upload Cypress videos
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: ./testProject/cypress/videos
 
       - name: Upload Cypress screenshots
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots
