@@ -1,25 +1,86 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+import 'cypress-file-upload';
+Cypress.Commands.add('loginAdmin', () => {
+    cy.visit(' http://localhost:4200');
+    
+    // Taper le username (Admin)
+    cy.get('[data-testId="username"]').type('admin');
+
+    // Taper le mot de passe
+    cy.get('[data-testId="password"]').type('123');
+
+    // Appuyer sur le boutton "se connecter"
+    cy.get('[data-testId="loginBtn"]').click();
+});
+
+Cypress.Commands.add('loginUser', () => {
+
+    cy.visit(' http://localhost:4200');
+     // Taper le username (User)
+    cy.get('[data-testId="username"]').type('charles');
+
+    // Taper le mot de passe
+    cy.get('[data-testId="password"]').type('123');
+
+    // Appuyer sur le boutton "se connecter"
+    cy.get('[data-testId="loginBtn"]').click();
+});
+
+Cypress.Commands.add('createCategorie', (categorie) => {
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:8081/users/login',
+    body: {
+      username: 'admin',
+      password: '123',
+    },
+  }).then((resp) => {
+     const token = resp.headers['authorization'];
+    cy.request({
+      method: 'POST',
+      url: 'http://localhost:8080/produits/api/cat',
+      headers: { Authorization: `Bearer ${token}` },
+      body: categorie,
+    }).then((resp) => {
+        const idCategorieCreated = resp.body.idCat;
+        return cy.wrap(idCategorieCreated);
+    })
+  })
+});
+
+Cypress.Commands.add('deleteCategorie', (idCat) => {
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:8081/users/login',
+    body: {
+      username: 'admin',
+      password: '123',
+    },
+  }).then((resp) => {
+     const token = resp.headers['authorization'];
+    cy.request({
+      method: 'DELETE',
+      url: 'http://localhost:8080/produits/api/cat/delCatById/'+ idCat,
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  })
+});
+
+Cypress.Commands.add('deleteProduit', (idProduit) => {
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:8081/users/login',
+    body: {
+      username: 'admin',
+      password: '123',
+    },
+  }).then((resp) => {
+     const token = resp.headers['authorization'];
+    cy.request({
+      method: 'DELETE',
+      url: 'http://localhost:8080/produits/api/delProdById/'+ idProduit,
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  })
+});
