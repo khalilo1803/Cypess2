@@ -35,6 +35,9 @@ jobs:
       - name: Run Cypress tests
         working-directory: ./testProject
         run: npx cypress run
+
+      - name: Debug Cypress output
+        run: ls -R ./testProject/cypress
       
       - name: Upload Cypress videos
         uses: actions/upload-artifact@v4
