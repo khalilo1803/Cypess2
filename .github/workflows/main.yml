@@ -35,3 +35,15 @@ jobs:
       - name: Run Cypress tests
         working-directory: ./testProject
         run: npx cypress run
+      
+      - name: Upload Cypress videos
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-videos
+          path: ./testProject/cypress/videos
+
+      - name: Upload Cypress screenshots
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-screenshots
+          path: ./testProject/cypress/screenshots
