@@ -37,13 +37,13 @@ jobs:
         run: npx cypress run
       
       - name: Upload Cypress videos
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: ./testProject/cypress/videos
 
       - name: Upload Cypress screenshots
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots
           path: ./testProject/cypress/screenshots
