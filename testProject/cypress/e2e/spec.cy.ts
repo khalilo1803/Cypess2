@@ -3,11 +3,17 @@
 describe('Test de connexion', () => {
   it('En tant que utilisateur je veux pouvoir me connecter à mon compte', () => {
 
-    // vist the page
+     // vist the page
     cy.visit(' http://localhost:4200');
 
-    // Taper le username
-    cy.get('[data-testId="username"]').contains('hello');
+    // Taper le username (Admin)
+    cy.get('[data-testId="username"]').type('admin');
+
+    // Taper le mot de passe
+    cy.get('[data-testId="password"]').type('123');
+
+    // Appuyer sur le boutton "se connecter"
+    cy.get('[data-testId="loginBtn"]').click();
 
 
   })
