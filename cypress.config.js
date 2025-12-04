@@ -4,6 +4,8 @@ const mysql = require("mysql2/promise");
 module.exports = defineConfig({
   projectId: 'a68otc',
   e2e: {
+    experimentalPromptCommand: true,
+    experimentalAiAssist: true ,
     setupNodeEvents(on, config) {
       // implement node event listeners here
       on("task", {
