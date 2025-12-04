@@ -1,7 +1,7 @@
 
 
 describe('Test de connexion', () => {
-  it('En tant que utilisateur je veux pouvoir me connecter à mon compte', () => {
+  it('En tant qu\' administrateur je veux pouvoir me connecter à mon compte', () => {
 
      // vist the page
     cy.visit(' http://localhost:4200');
@@ -14,7 +14,6 @@ describe('Test de connexion', () => {
 
     // Appuyer sur le boutton "se connecter"
     cy.get('[data-testId="loginBtn"]').click();
-
 
   })
 });

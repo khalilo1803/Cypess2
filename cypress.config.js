@@ -2,6 +2,7 @@ const { defineConfig } = require("cypress");
 const mysql = require("mysql2/promise");
 
 module.exports = defineConfig({
+  projectId: 'a68otc',
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -20,7 +21,7 @@ module.exports = defineConfig({
       });
 
     },
-    video: true,             // Active l’enregistrement vidéo
+    video: true,     // Active l’enregistrement vidéo
     videosFolder: 'cypress/videos', // Dossier où les vidéos seront stockées
   },
 });

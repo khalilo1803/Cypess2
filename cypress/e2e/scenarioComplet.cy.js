@@ -46,7 +46,6 @@ describe("Test Scenario Complet", () => {
         cy.wait('@addproduct').then((interception) => {
             cy.get('[data-testId="success-message"]').should('exist');
             idProductCreated = interception.response.body.idProduit;
-
         })
     
     });
